@@ -1,3 +1,10 @@
+// Importing cart variable from cart.js
+// Importing products variable from products.js
+import { cart } from "../data/cart.js";
+import { products } from "../data/products.js";
+// This functionality is connected to product.js
+// it will display all the product information inside
+// the product.js file
 let productsHTML = ``;
 
 products.forEach((product) => {
@@ -58,6 +65,7 @@ products.forEach((product) => {
 
 document.querySelector(".js-product-grid").innerHTML = productsHTML;
 
+// Add to cart functionality
 document.querySelectorAll(".js-add-to-cart").forEach((button) => {
   let addedMessageTimeoutId;
 
@@ -72,6 +80,7 @@ document.querySelectorAll(".js-add-to-cart").forEach((button) => {
       }
     });
 
+    // Add to cart base on the number in selector
     const quantitySelector = document.querySelector(
       `.js-quantity-selector-${productId}`
     );
@@ -94,6 +103,7 @@ document.querySelectorAll(".js-add-to-cart").forEach((button) => {
 
     document.querySelector(".js-cart-quantity").innerHTML = cartQuantity;
 
+    // 'Added' text in adding a product to cart
     const addedMessage = document.querySelector(
       `.js-added-to-cart-${productId}`
     );
