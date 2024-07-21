@@ -469,4 +469,26 @@ const products = [
     priceCents: 2400,
     keywords: ["sweaters", "hoodies", "apparel", "mens"],
   },
+  {
+    id: "bc783792-cdkkl190339-asiodhdf274",
+    image: "images/products/backpack.jpg",
+    name: "20 Liters Backpack",
+    rating: {
+      stars: 4.0,
+      count: 234,
+    },
+    priceCents: 900,
+    keywords: ["bag", "bagpack", "school", "office"],
+  },
+  {
+    id: "ml349sdj-sdasj892373-sasdkasd86723",
+    image: "images/products/umbrella.jpg",
+    name: "Umbrella",
+    rating: {
+      stars: 4.5,
+      count: 2334,
+    },
+    priceCents: 500,
+    keywords: ["rain", "umbrella"],
+  },
 ];
