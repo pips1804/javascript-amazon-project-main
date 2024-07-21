@@ -33,6 +33,7 @@ export function addToCart(productId) {
   }
 }
 
+//
 export function removerFromCart(productId) {
   const newCart = [];
 
