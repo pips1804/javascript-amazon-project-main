@@ -99,6 +99,7 @@ document.querySelectorAll(".js-add-to-cart").forEach((button) => {
   });
 });
 
+// Updating the cart quantity in the home page
 function updateCartQuantity() {
   const cartQuantity = calculateCartQuantity();
 
