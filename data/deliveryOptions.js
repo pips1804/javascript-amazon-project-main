@@ -16,6 +16,7 @@ export const deliveryOptions = [
   },
 ];
 
+// This function will get the delivery option id. It makes the code reusable
 export function getDeliveryOption(deliveryOptionId) {
   let deliveryOption;
 

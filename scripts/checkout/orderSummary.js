@@ -7,7 +7,6 @@ import {
 } from "../../data/cart.js";
 import { products, getProduct } from "../../data/products.js";
 import { formatCurrency } from "../utils/money.js";
-import { hello } from "https://unpkg.com/supersimpledev@1.0.1/hello.esm.js";
 import dayjs from "https://unpkg.com/dayjs@1.11.10/esm/index.js";
 import {
   deliveryOptions,
@@ -17,6 +16,7 @@ import { renderPaymentSummary } from "./paymentSummary.js";
 
 // This function will render all the order summary in your cart
 // By using this it will update the data and will regenerate all the HTML
+// It uses the Model View Controller (It updates the data and regenerates the HTML)
 export function renderOrderSummary() {
   let cartSummaryHTML = "";
 
@@ -140,6 +140,8 @@ export function renderOrderSummary() {
       container.remove();
 
       updateCartQuantity();
+
+      renderOrderSummary();
 
       renderPaymentSummary();
     });
