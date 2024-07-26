@@ -13,6 +13,7 @@ export function getProduct(productId) {
   return matchingProduct;
 }
 
+// This class will generate the product informations
 class Product {
   id;
   image;
@@ -21,6 +22,7 @@ class Product {
   priceCents;
 
   constructor(productDetails) {
+    // this lets an object access its own properties
     this.id = productDetails.id;
     this.image = productDetails.image;
     this.name = productDetails.name;
@@ -41,10 +43,13 @@ class Product {
   }
 }
 
+// This class is inherited in Product class,
+// we just added the size chart link since not all the product has sizes, only clothes.
 class Clothing extends Product {
   sizeChartLink;
 
   constructor(productDetails) {
+    // super gets the parent's class constructor
     super(productDetails);
     this.sizeChartLink = productDetails.sizeChartLink;
   }
@@ -57,6 +62,32 @@ class Clothing extends Product {
     `;
   }
 }
+
+// console.log(this);
+
+// const object2 = {
+//   a: 2,
+//   b: this.a,
+// };
+
+// const date = new Date();
+// console.log(date);
+// console.log(date.toLocaleTimeString());
+
+// function logThis() {
+//   console.log(this);
+// }
+
+// logThis();
+// logThis.call("hello");
+
+// const object3 = {
+//   method: () => {
+//     console.log(this);
+//   },
+// };
+
+// object3.method();
 
 export const products = [
   {
