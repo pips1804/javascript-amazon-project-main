@@ -1,8 +1,7 @@
 // Importing cart variable from cart.js
 // Importing products variable from products.js
-import { cart, addToCart, calculateCartQuantity } from "../data/cart.js";
+import { cart } from "../data/cart-class.js";
 import { products } from "../data/products.js";
-import { formatCurrency } from "./utils/money.js";
 // This functionality is connected to product.js
 // it will display all the product information inside
 // the product.js file
@@ -75,7 +74,7 @@ document.querySelectorAll(".js-add-to-cart").forEach((button) => {
 
     let messageTimeoutId = addedMessageTimeoutId;
 
-    addToCart(productId);
+    cart.addToCart(productId);
     updateCartQuantity();
 
     // 'Added' text in adding a product to cart
@@ -101,7 +100,7 @@ document.querySelectorAll(".js-add-to-cart").forEach((button) => {
 
 // Updating the cart quantity in the home page
 function updateCartQuantity() {
-  const cartQuantity = calculateCartQuantity();
+  const cartQuantity = cart.calculateCartQuantity();
 
   document.querySelector(".js-cart-quantity").innerHTML = cartQuantity;
 }
