@@ -9,13 +9,22 @@ import { loadCart } from "../data/cart.js";
 // This uses a module that has a function so when we make changes to our cart it will automatically update and load the HTML
 
 async function loadPage() {
-  await loadProductsFetch();
+  // This will handle the error
+  try {
+    // throw creates an error
+    // throw "error1";
+    await loadProductsFetch();
 
-  await new Promise((resolve) => {
-    loadCart(() => {
-      resolve();
+    const value = await new Promise((resolve, reject) => {
+      // throw "error2";
+      loadCart(() => {
+        // reject("error3");
+        resolve("value3");
+      });
     });
-  });
+  } catch (error) {
+    console.log("Unexpected error! Please try again later.");
+  }
 
   renderCheckoutHeader();
   renderOrderSummary();
