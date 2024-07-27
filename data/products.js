@@ -87,6 +87,8 @@ class Appliance extends Product {
   }
 }
 
+// This will send a request to the url and the url will send a JSON response
+// It will be transform to a javascript code than we can use to render the products
 export let products = [];
 
 export function loadProducts(fun) {
