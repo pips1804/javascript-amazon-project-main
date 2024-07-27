@@ -1,14 +1,18 @@
 // Importing cart variable from cart.js
 // Importing products variable from products.js
 import { cart } from "../data/cart-class.js";
-import { products } from "../data/products.js";
+import { products, loadProducts } from "../data/products.js";
 // This functionality is connected to product.js
 // it will display all the product information inside
 // the product.js file
-let productsHTML = ``;
 
-products.forEach((product) => {
-  productsHTML += `
+loadProducts(renderProductsGrid);
+
+function renderProductsGrid() {
+  let productsHTML = ``;
+
+  products.forEach((product) => {
+    productsHTML += `
             <div class="product-container">
           <div class="product-image-container">
             <img
@@ -61,48 +65,49 @@ products.forEach((product) => {
           data-product-id="${product.id}">Add to Cart</button>
         </div>
     `;
-});
-
-document.querySelector(".js-product-grid").innerHTML = productsHTML;
-
-// Add to cart functionality
-document.querySelectorAll(".js-add-to-cart").forEach((button) => {
-  let addedMessageTimeoutId;
-
-  button.addEventListener("click", () => {
-    const { productId } = button.dataset;
-
-    let messageTimeoutId = addedMessageTimeoutId;
-
-    cart.addToCart(productId);
-    updateCartQuantity();
-
-    // 'Added' text in adding a product to cart
-    const addedMessage = document.querySelector(
-      `.js-added-to-cart-${productId}`
-    );
-
-    addedMessage.classList.add("added-to-cart-visible");
-
-    if (addedMessageTimeoutId) {
-      clearTimeout(addedMessageTimeoutId);
-    }
-
-    const timeoutId = setTimeout(() => {
-      addedMessage.classList.remove("added-to-cart-visible");
-    }, 2000);
-
-    addedMessageTimeoutId = timeoutId;
-
-    updateCartQuantity();
   });
-});
 
-// Updating the cart quantity in the home page
-function updateCartQuantity() {
-  const cartQuantity = cart.calculateCartQuantity();
+  document.querySelector(".js-product-grid").innerHTML = productsHTML;
 
-  document.querySelector(".js-cart-quantity").innerHTML = cartQuantity;
+  // Add to cart functionality
+  document.querySelectorAll(".js-add-to-cart").forEach((button) => {
+    let addedMessageTimeoutId;
+
+    button.addEventListener("click", () => {
+      const { productId } = button.dataset;
+
+      let messageTimeoutId = addedMessageTimeoutId;
+
+      cart.addToCart(productId);
+      updateCartQuantity();
+
+      // 'Added' text in adding a product to cart
+      const addedMessage = document.querySelector(
+        `.js-added-to-cart-${productId}`
+      );
+
+      addedMessage.classList.add("added-to-cart-visible");
+
+      if (addedMessageTimeoutId) {
+        clearTimeout(addedMessageTimeoutId);
+      }
+
+      const timeoutId = setTimeout(() => {
+        addedMessage.classList.remove("added-to-cart-visible");
+      }, 2000);
+
+      addedMessageTimeoutId = timeoutId;
+
+      updateCartQuantity();
+    });
+  });
+
+  // Updating the cart quantity in the home page
+  function updateCartQuantity() {
+    const cartQuantity = cart.calculateCartQuantity();
+
+    document.querySelector(".js-cart-quantity").innerHTML = cartQuantity;
+  }
+
+  updateCartQuantity();
 }
-
-updateCartQuantity();
