@@ -87,10 +87,10 @@ class Appliance extends Product {
   }
 }
 
-// This will send a request to the url and the url will send a JSON response
-// It will be transform to a javascript code than we can use to render the products
 export let products = [];
 
+// This uses fetch, fetch is a promise
+// It is easier to use than xhr since you dont have to convert the json response
 export function loadProductsFetch() {
   const promise = fetch("https://supersimplebackend.dev/products")
     .then((response) => {
@@ -116,6 +116,8 @@ export function loadProductsFetch() {
 //   console.log("next step");
 // });
 
+// This will send a request to the url and the url will send a JSON response
+// It will be transform to a javascript code than we can use to render the products
 export function loadProducts(fun) {
   const xhr = new XMLHttpRequest();
 

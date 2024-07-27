@@ -8,6 +8,23 @@ import { loadCart } from "../data/cart.js";
 
 // This uses a module that has a function so when we make changes to our cart it will automatically update and load the HTML
 
+async function loadPage() {
+  await loadProductsFetch();
+
+  await new Promise((resolve) => {
+    loadCart(() => {
+      resolve();
+    });
+  });
+
+  renderCheckoutHeader();
+  renderOrderSummary();
+  renderPaymentSummary();
+}
+
+loadPage();
+
+/*
 // This will load the functions after another
 Promise.all([
   loadProductsFetch(),
@@ -22,6 +39,7 @@ Promise.all([
   renderOrderSummary();
   renderPaymentSummary();
 });
+*/
 
 /*
 new Promise((resolve) => {
