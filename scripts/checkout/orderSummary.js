@@ -27,7 +27,9 @@ export function renderOrderSummary() {
 
     cartSummaryHTML += `
       <div class="cart-item-container
-        js-cart-item-container-${matchingProduct.id}">
+        js-cart-item-container-${
+          matchingProduct.id
+        } js-cart-item-container-all">
         <div class="delivery-date">
           Delivery date: ${dateString}
         </div>

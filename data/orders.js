@@ -6,6 +6,20 @@ export function addOrder(order) {
   saveToStorage();
 }
 
+// This will save the order to the local storage
 function saveToStorage() {
   localStorage.setItem("orders", JSON.stringify(orders));
+}
+
+// This will identify and get the matching orders
+export function getOrder(orderId) {
+  let matchingOrder;
+
+  orders.forEach((order) => {
+    if (order.id === orderId) {
+      matchingOrder = order;
+    }
+  });
+
+  return matchingOrder;
 }
